@@ -1,0 +1,63 @@
+World Generator
+
+There should be a separate function to create a random number which is 7 digits long at this stage.
+It gets broken down into groups of 3:2:2 and those random numbers are used to calculate different
+combinations
+
+- Class should be the generator itself to be called in a main
+
+
+-- Initialisation:
+--- Should include the seed so when an instance is created we add a seed into it
+--- Convert the seed to a list of integers
+
+-- Layout method
+--- Should use the first 3 digits
+--- Used to create a shape of the island we're working on here. Multiply each digit by 10 or 100 (testing)
+--- 3 lists. Each digit represents an index along those lists.
+--- Needs to use the index of the seed_list created in the initialisation
+--- Then go through the lists to determine the size, depth of the land
+--- Maybe also a special modifier for the third digit
+--- Return the results in a dictionary for the sake of reading
+
+
+
+
+Change of plan
+- Move from class structure to modular function structure. Separate to a main file for execution and the methods go into their own
+files.
+
+
+-- The loot method
+--- Use a series of if statements to check which terrain was created.
+--- Depending on which options are inputted, increment the count.
+--- The minimum possible is 30
+--- The maximum is 100
+--- For loot we would have, common, uncommon, rare, legendary and mythical
+--- If I make  5 brackets, each within the gap of 70,  around 13 per bracket.
+Easy - 30-43
+Normal - 44-57
+Hard  - 58-71
+Challenging 72-85
+Lethal 86-100
+
+Loot chances per bracket
+Easy
+- Common - 40%
+- Uncommon - 25%
+- Rare - 15%
+- Legendary - 15%
+- Mythical - 5%
+
+Normal
+- Common - 85%
+- Uncommon - 70%
+- Rare - 60%
+- Legendary - 35%
+- Mythical - 10%
+
+Hard
+- Common -
+
+
+
