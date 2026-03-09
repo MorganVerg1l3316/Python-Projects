@@ -1,32 +1,55 @@
 
-def loot(layout):
-    count = 0
+def loot(challenge):
 
-    if layout.get("Size") == [50,50] or [75.75] or [100,100]:
-        count += 5
-    elif layout.get("Size") == [125,125] or [150, 150] or [200,200]:
-        count += 15
-    elif layout.get("Size") == [250,250] or [300,300] or [400,400]:
-        count += 25
+    easy = {
+        "Common": 62.5,
+        "Uncommon": 20,
+        "Rare": 10,
+        "Legendary": 5,
+        "Mythical": 2.5
+    }
+
+    normal = {
+        "Common": 49.4,
+        "Uncommon": 18.8,
+        "Rare": 13.1,
+        "Legendary": 10.6,
+        "Mythical": 8.1
+    }
+
+    hard = {
+        "Common": 36.3,
+        "Uncommon": 17.5,
+        "Rare": 16.3,
+        "Legendary": 16.3,
+        "Mythical": 13.8
+    }
+
+    challenging = {
+        "Common": 23.1,
+        "Uncommon": 16.3,
+        "Rare": 19.4,
+        "Legendary": 21.9,
+        "Mythical": 19.4
+    }
+
+    lethal = {
+        "Common": 10,
+        "Uncommon": 15,
+        "Rare": 22.5,
+        "Legendary": 27.5,
+        "Mythical": 25
+    }
+
+    if challenge <= 43:
+        return easy, "Easy"
+    elif challenge <= 57:
+        return normal, "Normal"
+    elif challenge <= 71:
+        return hard, "Hard"
+    elif challenge <= 85:
+        return challenging, "Challenging"
+    elif challenge <= 100:
+        return lethal, "Lethal"
     else:
-        count += 35
-
-
-    if layout.get("Depth") == 30 or 40 or 50:
-        count += 5
-    elif layout.get("Depth") == 60 or 70 or 80:
-        count += 10
-    elif layout.get("Depth") == 100 or 120 or 140:
-        count += 15
-    else:
-        count += 20
-
-    if layout.get("Special") == "Islands" or "Freshwater" or "Mountains":
-        count += 10
-    elif layout.get("Special") == "Saltwater" or "Desert" or "Ravenes":
-        count += 20
-    elif layout.get("Special") == "Volcano" or "Ice caps" or "Tundra":
-        count += 30
-    else:
-        count += 45
-
+        return 'None'
