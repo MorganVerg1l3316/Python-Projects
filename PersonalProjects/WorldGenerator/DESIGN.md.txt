@@ -82,7 +82,7 @@ Lethal
 - Mythical - 25%
 
 -- Factions
-
+- Function should return the name of the factions that could spawn here
 For the sake of generalisation I'll use some typical fantasy factions here
 
 - Orc
@@ -98,3 +98,7 @@ Ice caps, Desert, Crash-zone or Tundra.
 The rest can show up anywhere. So we first check if the last two factions are able to show up, if they are then they're
 in the pool. Then use the seed to check which faction shows up from the easy factions. In fact, could make a dictionary
 with one set to Easy, one set to Challenging, and one which is both that we can iterate over based on prior factors
+
+-- Revising this in practice, I like the idea that on the base environments, the tough factions cannot appear unless the seed
+manages to get the difficulty really high
+- The toughest faction can only appear on lethal

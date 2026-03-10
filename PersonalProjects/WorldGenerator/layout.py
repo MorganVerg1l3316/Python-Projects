@@ -4,22 +4,22 @@ def layout(seed_list):
     check_depth = seed_list[1]
     check_special = seed_list[2]
     results = {
-        "Size": [0, 0],
+        "Size": (0, 0),
         "Depth": 0,
         "Special": ""
     }
 
     Size = [
-        [50, 50],
-        [75, 75],
-        [100, 100],
-        [125, 125],
-        [150, 150],
-        [200, 200],
-        [250, 250],
-        [300, 300],
-        [400, 400],
-        [500, 500]
+        (50, 50),
+        (75, 75),
+        (100, 100),
+        (125, 125),
+        (150, 150),
+        (200, 200),
+        (250, 250),
+        (300, 300),
+        (400, 400),
+        (500, 500)
     ]
 
     Depth = [
@@ -38,7 +38,7 @@ def layout(seed_list):
     Special = [
         "Islands",
         "Mountains",
-        "Ravenes",
+        "Ravines",
         "Freshwater",
         "Saltwater",
         "Volcano",

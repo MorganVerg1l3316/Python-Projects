@@ -3,33 +3,28 @@
 def difficulty(layout):
     count = 0
 
-    if layout.get("Size") == [50,50] or [75.75] or [100,100]:
-        count += 5
-    elif layout.get("Size") == [125,125] or [150, 150] or [200,200]:
-        count += 15
-    elif layout.get("Size") == [250,250] or [300,300] or [400,400]:
-        count += 25
-    else:
-        count += 35
+    size_scores = {
+        (50,50): 5, (75,75): 5, (100,100): 5,
+        (125,125): 15, (150,150): 15, (200,200): 15,
+        (250,250): 25, (300,300): 25, (400,400): 25
+    }
 
 
-    if layout.get("Depth") == 30 or 40 or 50:
-        count += 5
-    elif layout.get("Depth") == 60 or 70 or 80:
-        count += 10
-    elif layout.get("Depth") == 100 or 120 or 140:
-        count += 15
-    else:
-        count += 20
+    depth_scores = {
+        30: 5, 40: 5, 50: 5,
+        60: 10, 70: 10, 80: 10,
+        100: 15, 120: 15, 140: 15
+    }
 
-    if layout.get("Special") == "Islands" or "Freshwater" or "Mountains":
-        count += 10
-    elif layout.get("Special") == "Saltwater" or "Desert" or "Ravenes":
-        count += 20
-    elif layout.get("Special") == "Volcano" or "Ice caps" or "Tundra":
-        count += 30
-    else:
-        count += 45
 
+    special_scores = {
+        "Islands": 10, "Freshwater": 10, "Mountains": 10,
+        "Saltwater": 20, "Desert": 20, "Ravines": 20,
+        "Volcano": 30, "Ice caps": 30, "Tundra": 30
+    }
+
+    count += size_scores.get(layout["Size"], 35)
+    count += depth_scores.get(layout["Depth"], 20)
+    count += special_scores.get(layout["Special"], 45)
 
     return count

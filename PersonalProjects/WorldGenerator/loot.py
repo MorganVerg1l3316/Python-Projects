@@ -42,13 +42,13 @@ def loot(challenge):
     }
 
     if challenge <= 43:
-        return easy, "Easy"
+        return  easy, "Easy"
     elif challenge <= 57:
-        return normal, "Normal"
+        return  normal, "Normal"
     elif challenge <= 71:
-        return hard, "Hard"
+        return  hard, "Hard"
     elif challenge <= 85:
-        return challenging, "Challenging"
+        return  challenging, "Challenging"
     elif challenge <= 100:
         return lethal, "Lethal"
     else:
