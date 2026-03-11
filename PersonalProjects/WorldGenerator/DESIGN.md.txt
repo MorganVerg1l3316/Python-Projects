@@ -1,104 +1,31 @@
 World Generator
 
-There should be a separate function to create a random number which is 7 digits long at this stage.
-It gets broken down into groups of 3:2:2 and those random numbers are used to calculate different
-combinations
+World Generator function should be able to create a mapping of a fictional planet, complete with
+1. An x and y coordinates for size 2. The depth 3. The biome 4. The difficulty level of the planet
+5. The different rarities of loot found there and 6. The faction of enemies. I may obviously add to this
+later on but this is a good start point in my opinion
 
-- Class should be the generator itself to be called in a main
+- So we want to use a 7 digit seed. Initially I planned to use a 3:2:2 split. I moved this to a 3:4 split. This
+based the layout on the seed which I wanted to do, then the factions uses the last 4. I ended up moving this way
+because I wanted to base the difficulty off of how the layout was randomized rather than having it completely up to
+chance from your seed
 
+- So yes, the first 3 digits of the seed, which has to be converted from a string to a list of integers to use indexing,
+this is used to iterate through some lists to choose each datapoint
 
--- Initialisation:
---- Should include the seed so when an instance is created we add a seed into it
---- Convert the seed to a list of integers
+- Then to get the loot we need the difficulty. That was straightforward in terms of setting apart the different
+layout datapoints into categories. Each category would increment a count by an increasing amount based on how difficult
+it should be. So larger areas or more hostile environments boosted the difficulty scaling. Which would result in better
+loot being found alongside tougher enemies
 
--- Layout method
---- Should use the first 3 digits
---- Used to create a shape of the island we're working on here. Multiply each digit by 10 or 100 (testing)
---- 3 lists. Each digit represents an index along those lists.
---- Needs to use the index of the seed_list created in the initialisation
---- Then go through the lists to determine the size, depth of the land
---- Maybe also a special modifier for the third digit
---- Return the results in a dictionary for the sake of reading
+- The difficulty score gets used in the loot function, using the difficulty score with different difficulty brackets
+to return the difficulty and the loot rarities. That in itself took a little while to calculate, I picked the easy
+ones first and essentially picked 5 percentages that add to 100 and decrease dramatically. Then I knew I'd want to
+get close to reversing it so I had to calculate each step and decrease each loot rarity by a specific amount to
+get it down evenly.
 
-
-
-
-Change of plan
-- Move from class structure to modular function structure. Separate to a main file for execution and the methods go into their own
-files.
-
-
--- The loot method
---- Use a series of if statements to check which terrain was created.
---- Depending on which options are inputted, increment the count.
---- The minimum possible is 30
---- The maximum is 100
---- For loot we would have, common, uncommon, rare, legendary and mythical
---- If I make  5 brackets, each within the gap of 70,  around 13 per bracket.
-Easy - 30-43
-Normal - 44-57
-Hard  - 58-71
-Challenging 72-85
-Lethal 86-100
-
-Loot chances per bracket
-Should be an even drop in percentage that ends up reversing by the hardest difficulty
-Gap = (Target - Start) / 4. So for Easy we have these percents and for Lethal, I'll design those first
-
-
-Easy
-- Common - 62.5%
-- Uncommon - 20%
-- Rare - 10%
-- Legendary - 5%
-- Mythical - 2.5%
-
-Normal
-- Common - 49.4%
-- Uncommon - 18.8%
-- Rare - 13.1%
-- Legendary - 10.6%
-- Mythical - 8.1%
-
-Hard
-- Common - 36.3%
-- Uncommon - 17.5%
-- Rare - 16.3%
-- Legendary - 16.3%
-- Mythical - 13.8%
-
-Challenging
-- Common - 23.1%
-- Uncommon - 16.3%
-- Rare - 19.4%
-- Legendary - 21.9%
-- Mythical - 19.4%
-
-Lethal
-- Common - 10%
-- Uncommon - 15%
-- Rare - 22.5%
-- Legendary - 27.5%
-- Mythical - 25%
-
--- Factions
-- Function should return the name of the factions that could spawn here
-For the sake of generalisation I'll use some typical fantasy factions here
-
-- Orc
-- Troll
-- Dark Elves
-- Mind-flayers
-- Dark Knights
-
-So we want to check a number of factors to decide which faction's show up on a given planet
-
-So the top two factions are the hardest and can only show up if, the difficulty score is above 71. And if the terrain is either
-Ice caps, Desert, Crash-zone or Tundra.
-The rest can show up anywhere. So we first check if the last two factions are able to show up, if they are then they're
-in the pool. Then use the seed to check which faction shows up from the easy factions. In fact, could make a dictionary
-with one set to Easy, one set to Challenging, and one which is both that we can iterate over based on prior factors
-
--- Revising this in practice, I like the idea that on the base environments, the tough factions cannot appear unless the seed
-manages to get the difficulty really high
-- The toughest faction can only appear on lethal
+- Factions took a bit longer because it's a combination of difficulty and seeding. So the difficulty affects
+certain factions showing up. I had an easy pool with only easy enemies, a normal pool with all types except the hardest,
+a hard pool with only the harder types and including the hardest, then the hardest difficulty only has the hardest enemy
+type. The seed here uses the last 4 digits, adds them up and uses modulo to pick which index to used in the list, and
+that's the enemy that gets picked. In testing, there was a good spread of enemy types on each difficulty.

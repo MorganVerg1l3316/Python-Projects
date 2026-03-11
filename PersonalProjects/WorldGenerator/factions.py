@@ -1,3 +1,11 @@
+"""
+This function takes the difficulty name and the seed. The difficulty is used to decide which pool of enemy
+types is used. The harder pools have the challenging enemies and vice versa. Then we search that pool
+for the difficulty in the parameter and the challenge number from it. We then move those enemy types into a list.
+The last four digits of the seed are added together and that number is used in the calculation of which enemy
+is selected from the list. We then return a string of that enemy faction.
+"""
+
 import random
 # from collections import Counter
 

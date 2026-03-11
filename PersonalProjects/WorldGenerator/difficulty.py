@@ -1,3 +1,9 @@
+"""
+Takes the dictionary from the layout. We have 3 dictionaries for each aspect of the terrain.
+It increments the difficulty score depending on which element came up from the seed in the prior method.
+The total number from this is returned as the difficulty number
+"""
+
 
 
 def difficulty(layout):

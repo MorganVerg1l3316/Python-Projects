@@ -1,4 +1,10 @@
 
+"""
+Takes the seed as a list of 7 digits. Looks at the first 3 and depending on the value, selects
+the datapoint from the list. These are returned as a dictionary
+"""
+
+
 def layout(seed_list):
     check_size = seed_list[0]
     check_depth = seed_list[1]

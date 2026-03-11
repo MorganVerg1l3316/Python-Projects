@@ -1,3 +1,11 @@
+"""
+This sets out the different loot rarities on various difficulties.
+It also balances how often each difficulty shows up based on the score, the maximum being 100.
+The function returns the difficulty associated with the difficulty number and also the dictionary
+of loot.
+"""
+
+
 
 def loot(challenge):
 

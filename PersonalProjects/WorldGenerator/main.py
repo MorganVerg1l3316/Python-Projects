@@ -1,9 +1,21 @@
+"""
+This algorithm takes in a seven digit seed as a string. It's converted into a list and those digits are used in various
+ areas to return the world. It runs the layout function with the seed, this returns 3 pieces of information:
+ A tuple with the x and y for the map, the depth and the biome type. Similar
+ to this, the loot function runs the difficulty function with the results of layout.
+ This returns the difficulty and the rarities of each loot type on said difficulty. Then it runs the factions
+ function which returns the chosen faction.
+"""
+
+
 from layout import layout
 from loot import loot
 from difficulty import difficulty
 from factions import factions
 import random
 from collections import Counter, defaultdict
+
+
 
 def main(seed):
     if not isinstance(seed, str):
@@ -22,7 +34,7 @@ def main(seed):
 
     print("Faction on this planet: " + enemies.upper())
 
-main("0000000")
+main("4589276")
 
 # testing factions
 # results = Counter()
